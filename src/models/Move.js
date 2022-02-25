@@ -6,11 +6,11 @@ class Move {
         this.weakness = "Paper";
         this.strength = "Scissors";
         break;
-      case "Papers":
+      case "Paper":
         this.weakness = "Scissors";
         this.strength = "Rock";
         break;
-      case "Scisors":
+      case "Scissors":
         this.weakness = "Rock";
         this.strength = "Paper";
         break;

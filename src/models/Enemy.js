@@ -1,5 +1,5 @@
-import Character from "./Character";
-import Move from "./Move";
+import Character from "./Character.js";
+import Move from "./Move.js";
 
 class Enemy extends Character {
   constructor(data) {
@@ -9,8 +9,9 @@ class Enemy extends Character {
     this.openingMove = data.openingMove;
   }
 
-  getRandomMove() {
-    return Move.randomMove(this.moveList);
+  selectRandomMove() {
+    console.log(this)
+    this.selectedMove =  Move.randomMove(this.moveList);
   }
 }
 

@@ -3,10 +3,9 @@ import Move from "./Move.js";
 
 class Player extends Character {
   constructor() {
-    super({lives: 3, graphics: {}});
+    const moveList = [new Move("Rock"), new Move("Paper"), new Move("Scissors")];
 
-    this.moveList     = [new Move("Rock"), new Move("Paper"), new Move("Scissors")];
-  }
+    super({lives: 3, graphics: {}, moveList: moveList});  }
 }
 
 export default Player;

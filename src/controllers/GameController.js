@@ -2,17 +2,27 @@ import Game            from "../models/Game.js";
 import Player          from "../models/Player.js";
 import InputController from "./InputController.js";
 import GameTimer       from "../models/GameTimer.js";
+import GameView        from "../views/GameView.js";
 
 class GameController {
-  static loadGame() {
-    this.playerCharacter = new Player();
-    this.gameTimer       = new GameTimer(10000);
-    this.game            = new Game(this.playerCharacter, this.gameTimer);
-    this.inputController = new InputController(this.playerCharacter.moveList);
-  }
+  static game  = new Game();
 
   static selectMove(move) {
-    this.playerCharacter.selectedMove = move;
+    this.game.playerCharacter.selectedMove = move;
+    this.game.currentEnemy.selectRandomMove();
+    this.game.view.showActions();
+  }
+
+  static getPlayerMove() {
+    return this.game.playerCharacter.selectedMove;
+  }
+
+  static getEnemyMove() {
+    return this.game.currentEnemy.selectedMove;
+  }
+
+  static getRoundWinner() {
+    return this.game.calculateVictory();
   }
 }
 

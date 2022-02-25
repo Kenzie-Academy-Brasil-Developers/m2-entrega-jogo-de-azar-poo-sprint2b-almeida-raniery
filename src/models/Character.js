@@ -1,10 +1,11 @@
 class Character {
-  constructor({lives, graphics}) {
+  constructor({lives, graphics, moveList}) {
     this.selectedMove;
 
-    this._lives       = lives;
-    this.graphics     = graphics;
-    this.isDead       = false;
+    this.moveList = moveList;
+    this._lives   = lives;
+    this.graphics = graphics;
+    this.isDead   = false;
   }
 
   set lives(newValue) {
