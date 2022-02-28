@@ -5,7 +5,16 @@ class Player extends Character {
   constructor() {
     const moveList = [new Move("Rock"), new Move("Paper"), new Move("Scissors")];
 
-    super({lives: 3, graphics: {}, moveList: moveList});  }
+    super({
+      lives: 3,
+      graphics: {
+        idle: { sx: 0, sy: 0 },
+        ready: { sx: 1, sy: 0 },
+        draw: { sx: 3, sy: 0 },
+      },
+      moveList: moveList,
+    });
+  }
 }
 
 export default Player;

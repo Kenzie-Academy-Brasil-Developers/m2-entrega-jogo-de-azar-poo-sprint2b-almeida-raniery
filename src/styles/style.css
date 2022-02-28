@@ -1,1 +1,23 @@
-/* Escreva seu código aqui */
+canvas {
+  width: 320px;
+  height: 240px;
+  image-rendering:crisp-edges;
+  background-image: url(/src/img/Background.jpg);
+  background-size: 320px;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  margin: auto;
+  display: block;
+}
+
+.flip{
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+  filter: flipH;
+}
+
+#controls {
+ text-align: center;
+}

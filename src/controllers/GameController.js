@@ -1,16 +1,14 @@
-import Game            from "../models/Game.js";
-import Player          from "../models/Player.js";
-import InputController from "./InputController.js";
-import GameTimer       from "../models/GameTimer.js";
-import GameView        from "../views/GameView.js";
+import Game from "../models/Game.js";
 
 class GameController {
-  static game  = new Game();
+  static game = new Game();
 
   static selectMove(move) {
     this.game.playerCharacter.selectedMove = move;
-    this.game.currentEnemy.selectRandomMove();
-    this.game.view.showActions();
+
+    if (this.game.timer.intervalId === 0) {
+      this.game.timer.start();
+    }
   }
 
   static getPlayerMove() {
@@ -23,6 +21,27 @@ class GameController {
 
   static getRoundWinner() {
     return this.game.calculateVictory();
+  }
+
+  static getPlayerLives() {
+    return this.game.playerCharacter.lives;
+  }
+
+  static getEnemyLives() {
+    return this.game.currentEnemy.lives;
+  }
+
+  static getCharacterGraphics(handle) {
+    return {
+      player: this.game.playerCharacter.graphics[handle],
+      enemy: this.game.currentEnemy.graphics[handle],
+    };
+  }
+
+  static onTimerFinish() {
+    this.game.currentEnemy.selectRandomMove();
+    this.game.view.showActions();
+    this.game.timer.reset();
   }
 }
 

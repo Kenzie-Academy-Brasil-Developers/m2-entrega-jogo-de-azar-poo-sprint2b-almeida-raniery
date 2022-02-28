@@ -5,6 +5,7 @@ class Enemy extends Character {
   constructor(data) {
     super(data)
     
+    this.name        = data.name;  
     this.specialMove = data.specialMove;
     this.openingMove = data.openingMove;
   }

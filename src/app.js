@@ -1,3 +1,5 @@
 import GameController from "./controllers/GameController.js";
 
-window.onload = GameController.loadGame;
+const gameView = GameController.game.view
+
+window.onload = gameView.createView.bind(gameView);
