@@ -8,6 +8,9 @@ class Player extends Character {
     super({
       lives: 3,
       graphics: {
+        x: 12,
+        y: 124,
+        scale: 3,
         idle: { sx: 0, sy: 0 },
         ready: { sx: 1, sy: 0 },
         draw: { sx: 3, sy: 0 },

@@ -1,11 +1,14 @@
 class Character {
+  static states = ["draw","ready", "idle", "idle"];
+
   constructor({lives, graphics, moveList}) {
     this.selectedMove;
 
-    this.moveList = moveList;
-    this._lives   = lives;
-    this.graphics = graphics;
-    this.isDead   = false;
+    this.moveList     = moveList;
+    this._lives       = lives;
+    this.graphics     = graphics;
+    this.isDead       = false;
+    this.currentState = "idle"
   }
 
   set lives(newValue) {
@@ -18,6 +21,13 @@ class Character {
 
   get lives() {
     return this._lives;
+  }
+
+  getGraphics(handle) {
+    const {x, y, scale} = this.graphics;
+    const transform     = {x, y, scale};
+
+    return {...transform, ...this.graphics[handle]}
   }
 }
 

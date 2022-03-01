@@ -1,3 +1,8 @@
+ @font-face {
+   font-family: 'press2PStart';
+   src: url('../fonts/PressStart2P-Regular.ttf');
+}
+
 canvas {
   width: 320px;
   height: 240px;
@@ -10,14 +15,31 @@ canvas {
   display: block;
 }
 
-.flip{
-  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  transform: scale(-1, 1);
-  filter: flipH;
+#controls {
+  display: flex;
+  font-family: 'press2PStart';
+  justify-content: center;
+  column-gap: 10px;
+  margin-top: 10px;
 }
 
-#controls {
- text-align: center;
+.btn {
+  flex-basis: 90px;
+  height: 90px;
+}
+
+.btn:focus{
+  background-color: aqua;
+}
+
+@media screen and (width >= 640px) {
+  canvas {
+    width: 640px;
+    height: 480px;
+    background-size: 640px;
+  }  
+
+  #controls {
+    column-gap: 20px;
+  }
 }

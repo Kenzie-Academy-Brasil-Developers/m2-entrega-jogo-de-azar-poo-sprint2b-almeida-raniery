@@ -11,7 +11,6 @@ class Enemy extends Character {
   }
 
   selectRandomMove() {
-    console.log(this)
     this.selectedMove =  Move.randomMove(this.moveList);
   }
 }

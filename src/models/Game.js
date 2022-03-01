@@ -4,6 +4,7 @@ import GameTimer       from "./GameTimer.js";
 import Player          from "./Player.js";
 import InputController from "../controllers/InputController.js";
 import GameView        from "../views/GameView.js";
+import Character from "./Character.js";
 
 class Game {
     constructor() {
@@ -31,12 +32,16 @@ class Game {
         this.playerCharacter.lives -=1;
         return `${this.currentEnemy.name} Wins!`;
       }
-
     }
 
     nextStage() {
       this.stageNumber++;
       this.currentEnemy = new Enemy(enemiesDB[this.stageNumber]);
+    }
+
+    updateStates(timeStamp = 3) {
+      this.playerCharacter.currentState = Character.states[timeStamp];
+      this.currentEnemy.currentState    = Character.states[timeStamp];
     }
 }
 

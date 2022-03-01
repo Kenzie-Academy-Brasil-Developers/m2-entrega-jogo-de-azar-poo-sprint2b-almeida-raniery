@@ -21,6 +21,9 @@ class Move {
         this.flipped = { sx: 3, sy: 5 };
         break;
     }
+
+    this.graphic = { x: 168, y: 100, scale: 2, ...this.graphic};
+    this.flipped = { x: 106, y:  92, scale: 2, ...this.flipped };
   }
 
   static randomMove(moveList) {

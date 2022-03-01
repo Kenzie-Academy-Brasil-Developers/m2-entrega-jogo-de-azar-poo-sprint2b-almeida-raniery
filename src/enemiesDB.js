@@ -7,6 +7,9 @@ const enemiesDB = [
     lives: 2,
     moveList: [new Move("Scissors"), new Move("Paper")],
     graphics: {
+      x: 230,
+      y: 142,
+      scale: 2,
       idle: { sx: 4, sy: 0 },
       ready: { sx: 4, sy: 0 },
       draw: { sx: 0, sy: 1 },
@@ -21,6 +24,9 @@ const enemiesDB = [
     lives: 2,
     moveList: [new Move("Scissors"), new Move("Rock")],
     graphics: {
+      x: 230,
+      y: 142,
+      scale: 2,
       idle: { sx: 1, sy: 1 },
       ready: { sx: 2, sy: 1 },
       draw: { sx: 4, sy: 1 },
@@ -31,6 +37,9 @@ const enemiesDB = [
     lives: 3,
     moveList: [new Move("Scissors"), new Move("Paper"), new Move("Rock")],
     graphics: {
+      x: 230,
+      y: 142,
+      scale: 2,
       idle: { sx: 5, sy: 1 },
       ready: { sx: 5, sy: 1 },
       draw: { sx: 1, sy: 2 },
@@ -44,6 +53,9 @@ const enemiesDB = [
     lives: 3,
     moveList: [new Move("Scissors"), new Move("Paper"), new Move("Rock")],
     graphics: {
+      x: 230,
+      y: 142,
+      scale: 2,
       idle: { sx: 2, sy: 2 },
       ready: [
         { sx: 3, sy: 2 },
@@ -66,6 +78,9 @@ const enemiesDB = [
     lives: 1,
     moveList: [],
     graphics: {
+      x: 230,
+      y: 142,
+      scale: 2,
       idle: { sx: 0, sy: 4 },
       ready: { sx: 1, sy: 4 },
       draw: { sx: 3, sy: 4 },

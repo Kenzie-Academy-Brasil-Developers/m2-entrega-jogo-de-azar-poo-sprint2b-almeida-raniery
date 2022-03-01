@@ -12,12 +12,18 @@ class GameTimer{
   }
 
   update() {
-    this.time -= 100;
-    console.log(this.time/1000)
-    if (this.time <=0) {
+
+    if (this.time % 1000 === 0) {
+      GameController.onTimerUpdate(this.time);
+    }
+
+    if (this.time <= 0) {
       this.time = 0;
       this.finish();
+      return;
     }
+
+    this.time -= 100;
   }
 
   pause() {}
