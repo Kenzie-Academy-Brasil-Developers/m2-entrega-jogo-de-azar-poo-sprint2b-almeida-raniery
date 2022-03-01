@@ -18,21 +18,23 @@ class HUD {
 
   drawBorder() {
     this.cont.fillStyle   = "#bb6446";
-    this.cont.strokeStyle = "#d69b55";
-    this.cont.lineWidth   = 4;
+    this.cont.strokeStyle = "gold";
+    this.cont.lineWidth   = 2;
     this.cont.fillRect(0, 0, this.canvas.width, 48);
-    this.cont.strokeRect(2, 1, this.canvas.width - 4, 48);
+    this.cont.strokeRect(1, 1, this.canvas.width - 2, 48);
   }
 
   drawNames() {
+    const {playerName, enemyName} = GameController.getCharacterNames();
+
     this.cont.font = "8px press2PStart";
     this.cont.fillStyle = "white";
 
     this.cont.textAlign = "left";
-    this.cont.fillText(" Player", 8, 24);
+    this.cont.fillText(playerName, 12, 24);
 
     this.cont.textAlign = "right";
-    this.cont.fillText("Peace Pete", 308, 24);
+    this.cont.fillText(enemyName, 308, 24);
   }
 
   refresh() {

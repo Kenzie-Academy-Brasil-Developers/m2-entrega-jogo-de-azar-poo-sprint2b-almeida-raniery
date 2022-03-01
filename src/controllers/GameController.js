@@ -38,24 +38,44 @@ class GameController {
     };
   }
 
+  static getCharacterNames() {
+    return {
+      enemyName: this.game.currentEnemy.shortName,
+      playerName: "Player",
+    }
+  }
+
+  static nextStage() {
+    this.game.nextStage();
+  }
+
   static getUpdatedGraphics() {
     return this.getCharacterGraphics(this.game.playerCharacter.currentState);
   }
 
   static onTimerFinish() {
-    this.game.currentEnemy.selectRandomMove();
     this.game.view.showActions();
     this.game.timer.reset();
+
+    setTimeout(() => {
+      this.resetStates();
+      this.game.view.refresh();
+    }, 2000);
   }
 
   static onTimerUpdate(time) {
+
+    if(time === 1000) {
+      this.game.currentEnemy.selectRandomMove();
+    }
+
     this.game.updateStates(time / 1000);
     this.game.view.countDown(time/1000);
     
     console.log(time/1000);
   }
 
-  static updateStates() {
+  static resetStates() {
     this.game.updateStates();
   }
 }

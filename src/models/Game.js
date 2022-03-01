@@ -10,6 +10,7 @@ class Game {
     constructor() {
       this.stageNumber     = 0;
       this.turnNumber      = 0;
+      this.over            = true;
       this.timer           = new GameTimer(3000);
       this.playerCharacter = new Player();
       this.currentEnemy    = new Enemy(enemiesDB[this.stageNumber]);
@@ -40,6 +41,13 @@ class Game {
     }
 
     updateStates(timeStamp = 3) {
+
+      if(this.playerCharacter.isDead) {
+        this.over = true;
+      } else if(this.currentEnemy.isDead) {
+        this.nextStage();
+      }
+
       this.playerCharacter.currentState = Character.states[timeStamp];
       this.currentEnemy.currentState    = Character.states[timeStamp];
     }

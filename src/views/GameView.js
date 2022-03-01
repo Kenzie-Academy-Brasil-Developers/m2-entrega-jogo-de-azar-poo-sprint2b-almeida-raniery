@@ -10,23 +10,29 @@ class GameView {
   }
 
   createView() {
-    const playerImg = document.createElement("img");
-    const enemyImg  = document.createElement("img");
-    const ratio     = Math.ceil(window.devicePixelRatio);
+    const playerImg    = document.createElement("img");
+    const enemyImg     = document.createElement("img");
+    const playerAction = document.createElement("img");
+    const enemyAction  = document.createElement("img");
+    const ratio        = Math.ceil(window.devicePixelRatio);
 
     const { player: playerIdle, enemy: enemyIdle } = GameController.getCharacterGraphics("idle");
 
-    this.gameCanvas.width = 320 * ratio;
+    this.gameCanvas.width  = 320 * ratio;
     this.gameCanvas.height = 220 * ratio;
 
     this.cont.imageSmoothingEnabled = false;
     this.cont.webkitImageSmoothingEnabled = false;
 
-    this.playerImg = playerImg;
-    this.enemyImg = enemyImg;
+    this.playerImg    = playerImg;
+    this.enemyImg     = enemyImg;
+    this.playerAction = playerAction;
+    this.enemyAction  = enemyAction;
 
-    playerImg.src = this.spritePath;
-    enemyImg.src = this.spritePath;
+    playerImg.src    = this.spritePath;
+    enemyImg.src     = this.spritePath;
+    playerAction.src = this.spritePath;
+    enemyAction.src  = this.spritePath;
 
     this.hud.initHud();
 
@@ -40,36 +46,22 @@ class GameView {
   }
 
   showActions() {
-    const playerAction = document.createElement("img");
-    const enemyAction = document.createElement("img");
     const resultText = GameController.getRoundWinner();
 
     const { flipped: leftGraphic } = GameController.getPlayerMove();
     const { graphic: rightGraphic } = GameController.getEnemyMove();
 
-    playerAction.src = this.spritePath;
-    enemyAction.src = this.spritePath;
-
     this.refresh();
 
-    playerAction.addEventListener('load', () => {
-      this.drawSprite(playerAction, leftGraphic);
-    })
-    
-    enemyAction.addEventListener('load', () => {
-      this.drawSprite(enemyAction, rightGraphic);
-    })
+    this.drawSprite(this.playerAction, leftGraphic);
+    this.drawSprite(this.enemyAction, rightGraphic);
 
-    this.cont.font = "16px press2PStart";
+    this.cont.font = "16px November";
     this.cont.fillStyle = "white";
     this.cont.textAlign = "center";
+    this.cont.scale(this.ratio, this.ratio)
 
     this.cont.fillText(resultText, this.gameCanvas.width / 2 + 8, 190);
-
-    setTimeout(() => {
-      GameController.updateStates();
-      this.refresh();
-    }, 2000);
   }
 
   countDown(time) {
@@ -77,7 +69,7 @@ class GameView {
 
     this.refresh();
 
-    this.cont.font = "16px press2PStart";
+    this.cont.font = "32px November";
     this.cont.fillStyle = "white";
     this.cont.textAlign = "center";
 

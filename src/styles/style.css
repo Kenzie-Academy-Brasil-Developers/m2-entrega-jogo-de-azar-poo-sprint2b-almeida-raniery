@@ -3,6 +3,11 @@
    src: url('../fonts/PressStart2P-Regular.ttf');
 }
 
+@font-face {
+   font-family: 'November';
+   src: url('../fonts/novem.ttf');
+}
+
 canvas {
   width: 320px;
   height: 240px;

@@ -4,6 +4,7 @@ import Move           from "./models/Move.js";
 const enemiesDB = [
   {
     name: "Peaceful Pete",
+    shortName: "Peace Pete",
     lives: 2,
     moveList: [new Move("Scissors"), new Move("Paper")],
     graphics: {
@@ -21,6 +22,7 @@ const enemiesDB = [
   },
   {
     name: "Two-Fingered Jack",
+    shortName: "Two-Finger",
     lives: 2,
     moveList: [new Move("Scissors"), new Move("Rock")],
     graphics: {
@@ -34,6 +36,7 @@ const enemiesDB = [
   },
   {
     name: "Tricky Tracy",
+    shortName: "Tricky Tracy",
     lives: 3,
     moveList: [new Move("Scissors"), new Move("Paper"), new Move("Rock")],
     graphics: {
@@ -41,7 +44,7 @@ const enemiesDB = [
       y: 142,
       scale: 2,
       idle: { sx: 5, sy: 1 },
-      ready: { sx: 5, sy: 1 },
+      ready: { sx: 1, sy: 2 },
       draw: { sx: 1, sy: 2 },
     },
     specialMove: function () {
@@ -50,6 +53,7 @@ const enemiesDB = [
   },
   {
     name: "Bad Bluff Bronco",
+    shortName: "Bad-Bluff",
     lives: 3,
     moveList: [new Move("Scissors"), new Move("Paper"), new Move("Rock")],
     graphics: {
@@ -75,6 +79,7 @@ const enemiesDB = [
   },
   {
     name: "Lucky Lucy",
+    shortName: "Lucky Lucy",
     lives: 1,
     moveList: [],
     graphics: {

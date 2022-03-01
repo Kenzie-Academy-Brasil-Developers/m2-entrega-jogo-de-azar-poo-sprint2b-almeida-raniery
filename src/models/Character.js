@@ -3,7 +3,7 @@ class Character {
 
   constructor({lives, graphics, moveList}) {
     this.selectedMove;
-
+    
     this.moveList     = moveList;
     this._lives       = lives;
     this.graphics     = graphics;
