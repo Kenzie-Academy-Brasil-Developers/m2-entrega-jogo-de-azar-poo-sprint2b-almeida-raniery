@@ -1,50 +1,188 @@
- @font-face {
-   font-family: 'press2PStart';
-   src: url('../fonts/PressStart2P-Regular.ttf');
+@font-face {
+  font-family: "press2PStart";
+  src: url("../fonts/PressStart2P-Regular.ttf");
 }
 
 @font-face {
-   font-family: 'November';
-   src: url('../fonts/novem.ttf');
+  font-family: "November";
+  src: url("../fonts/novem.ttf");
+}
+
+body {
+  line-height: 120%;
+  font-family: "press2PStart";
+  color: wheat;
+  max-width: 360px;
+  background-image: radial-gradient(#9debff, #0096fe);
+  margin: auto;
+}
+
+h1 {
+  padding: 12px;
+  font-size: 16px;
+}
+
+h2 {
+  padding: 10px;
+  font-size: 14px;
+}
+
+p, li {
+  padding: 8px;
+  font-size: 10px;
+  text-indent: 2em;
+}
+
+section {
+  background-color: #261110;
+  min-height: 100vh;
 }
 
 canvas {
   width: 320px;
   height: 240px;
-  image-rendering:crisp-edges;
+  image-rendering: crisp-edges;
   background-image: url(/src/img/Background.jpg);
   background-size: 320px;
   background-position-y: bottom;
   background-repeat: no-repeat;
   margin: auto;
+  margin-bottom: 8px;
   display: block;
+  border-radius: 6px;
+}
+
+.game-screen {
+  position: relative;
+  width: 320px;
+  margin: auto;
 }
 
 #controls {
   display: flex;
-  font-family: 'press2PStart';
   justify-content: center;
   column-gap: 10px;
-  margin-top: 10px;
+  background-color: #8f4a37;
+  padding: 20px;
+}
+
+#machine-controls {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  background-color: #8f4a37;
+  padding: 20px;
 }
 
 .btn {
-  flex-basis: 90px;
-  height: 90px;
+  flex-basis: 75px;
+  height: 75px;
 }
 
-.btn:focus{
-  background-color: aqua;
+.machine-btn {
+  color: wheat;
+  padding: 10px;
+}
+
+.btn, .machine-btn {
+  color: wheat;
+  font-family: "press2PStart";
+  font-size: 10px;
+  background-color: #983a21;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #261110;
+}
+
+.btn:active, .machine-btn:active {
+  background-color: #a7452a;
+  box-shadow: 0 5px #261110;
+  transform: translateY(4px);
+}
+
+.btn:hover, .machine-btn:hover {
+  background-color: #a7452a;
+  cursor: pointer;
+}
+
+
+.btn-icon {
+  image-rendering: crisp-edges;
+  width: 48px;
+}
+
+
+.menu {
+  color: wheat;
+  font-size: 6pt;
+  font-family: press2PStart;
+  background-color: #983a21;
+}
+
+.menu ul {
+  text-align: center;
+  column-gap: 0;
+  column-count: 3;
+}
+
+.menu ul li {
+  padding: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-indent: 0px;
+  font-size: 10px;
+}
+
+.menu ul li:hover {
+  background-color: #261110;
+}
+
+.menu a {
+  text-decoration: none;
+  color: wheat;
+}
+
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
 }
 
 @media screen and (width >= 640px) {
+  body {
+    max-width: 680px;
+  }
+
   canvas {
     width: 640px;
     height: 480px;
     background-size: 640px;
-  }  
+    margin-bottom: 15px;
+  }
 
   #controls {
     column-gap: 20px;
+    max-width: 640px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+
+  .game-screen {
+    width: 640px;
   }
 }

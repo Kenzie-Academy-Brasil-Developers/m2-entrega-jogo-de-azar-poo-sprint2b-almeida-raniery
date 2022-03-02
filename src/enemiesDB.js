@@ -15,10 +15,6 @@ const enemiesDB = [
       ready: { sx: 4, sy: 0 },
       draw: { sx: 0, sy: 1 },
     },
-
-    openingMove: function () {
-      return this.movesList[0];
-    },
   },
   {
     name: "Two-Fingered Jack",
@@ -47,8 +43,15 @@ const enemiesDB = [
       ready: { sx: 1, sy: 2 },
       draw: { sx: 1, sy: 2 },
     },
-    specialMove: function () {
-      return new Move(this.selectedMove.weakness);
+    selectMove: function () {
+      const move     = Move.randomMove(this.moveList);
+      const fakeMove = new Move(move.weakness);
+
+      this.selectedMove = move;
+
+      return function () {
+        GameController.showEnemyMove(fakeMove);
+      }
     },
   },
   {
@@ -72,9 +75,9 @@ const enemiesDB = [
         { sx: 5, sy: 3 },
       ],
     },
-    specialMove: function () {
-      this.graphics.idle = this.graphics.tells[this.selectedMove.type];
-      return this.selectedMove;
+    getAltGraphic: function(handle){
+      const graphicsArray = this.graphics[handle];
+      return graphicsArray[this.selectedMove.id];
     },
   },
   {
@@ -90,8 +93,8 @@ const enemiesDB = [
       ready: { sx: 1, sy: 4 },
       draw: { sx: 3, sy: 4 },
     },
-    specialMove: function () {
-      return new Move(GameController.getPlayerMove().weakness);
+    selectMove: function () {
+      this.selectedMove = new Move(GameController.getPlayerMove().weakness);
     },
   },
 ];

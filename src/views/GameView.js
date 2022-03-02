@@ -1,40 +1,41 @@
 import GameController from "../controllers/GameController.js";
 import HUD from "./HUD.js";
+import View from "./View.js";
 
-class GameView {
+class GameView extends View {
   constructor() {
-    this.gameCanvas = document.querySelector("canvas");
-    this.cont       = this.gameCanvas.getContext("2d");
+    super()
     this.spritePath = "src/img/Spritesheet.png";
-    this.hud        = new HUD(this.gameCanvas);
   }
 
-  createView() {
+  init() {
     const playerImg    = document.createElement("img");
     const enemyImg     = document.createElement("img");
-    const playerAction = document.createElement("img");
-    const enemyAction  = document.createElement("img");
+    const action       = document.createElement("img");
     const ratio        = Math.ceil(window.devicePixelRatio);
 
     const { player: playerIdle, enemy: enemyIdle } = GameController.getCharacterGraphics("idle");
 
-    this.gameCanvas.width  = 320 * ratio;
-    this.gameCanvas.height = 220 * ratio;
+    this.canvas.width  = 320 * ratio;
+    this.canvas.height = 220 * ratio;
 
     this.cont.imageSmoothingEnabled = false;
     this.cont.webkitImageSmoothingEnabled = false;
 
     this.playerImg    = playerImg;
     this.enemyImg     = enemyImg;
-    this.playerAction = playerAction;
-    this.enemyAction  = enemyAction;
+    this.action       = action;
 
     playerImg.src    = this.spritePath;
     enemyImg.src     = this.spritePath;
-    playerAction.src = this.spritePath;
-    enemyAction.src  = this.spritePath;
+    action.src       = this.spritePath;
 
-    this.hud.initHud();
+    document.fonts.load("8px press2PStart").then(
+      () => {
+        this.hud = new HUD();
+        this.hud.init();
+      }
+    )
 
     playerImg.addEventListener("load", () => {
       this.drawSprite(playerImg, playerIdle);
@@ -45,23 +46,28 @@ class GameView {
     });
   }
 
-  showActions() {
+  showResult() {
     const resultText = GameController.getRoundWinner();
-
-    const { flipped: leftGraphic } = GameController.getPlayerMove();
-    const { graphic: rightGraphic } = GameController.getEnemyMove();
+    const playerMove = GameController.getPlayerMove();
+    const enemyMove  = GameController.getEnemyMove();
 
     this.refresh();
 
-    this.drawSprite(this.playerAction, leftGraphic);
-    this.drawSprite(this.enemyAction, rightGraphic);
+    this.showAction(playerMove, true);
+    this.showAction(enemyMove, false);
 
     this.cont.font = "16px November";
     this.cont.fillStyle = "white";
     this.cont.textAlign = "center";
     this.cont.scale(this.ratio, this.ratio)
 
-    this.cont.fillText(resultText, this.gameCanvas.width / 2 + 8, 190);
+    this.cont.fillText(resultText, this.canvas.width / 2 + 8, 190);
+  }
+
+  showAction(move, flipped) {
+    const graphic = flipped ? move.flipped : move.graphic;
+
+    this.drawSprite(this.action, graphic);
   }
 
   countDown(time) {
@@ -73,11 +79,11 @@ class GameView {
     this.cont.fillStyle = "white";
     this.cont.textAlign = "center";
 
-    this.cont.fillText(messages[time], this.gameCanvas.width / 2 + 8, 140);
+    this.cont.fillText(messages[time], this.canvas.width / 2 + 8, 140);
   }
 
   refresh() {
-    this.cont.clearRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
+    super.refresh();
 
     const { enemy, player } = GameController.getUpdatedGraphics();
 
@@ -86,20 +92,6 @@ class GameView {
 
     this.hud.refresh();
     this.hud.updateLives();
-  }
-
-  drawSprite(img, { sx, sy, x, y, scale }) {
-    this.cont.drawImage(
-      img,
-      sx * 32,
-      sy * 32,
-      32,
-      32,
-      x,
-      y,
-      scale * 32,
-      scale * 32
-    );
   }
 }
 

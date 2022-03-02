@@ -4,15 +4,21 @@ import Move from "./Move.js";
 class Enemy extends Character {
   constructor(data) {
     super(data)
-    
-    this.name        = data.name;  
-    this.shortName  = data.shortName;
-    this.specialMove = data.specialMove;
-    this.openingMove = data.openingMove;
+
+    this.name          = data.name;  
+    this.shortName     = data.shortName;
+
+    if (data.getAltGraphic) {
+      this.getAltGraphic = data.getAltGraphic;
+    }
+
+    if (data.selectMove) {
+      this.selectMove = data.selectMove;
+    }
   }
 
-  selectRandomMove() {
-    this.selectedMove =  Move.randomMove(this.moveList);
+  selectMove() {
+    this.selectedMove = Move.randomMove(this.moveList);
   }
 }
 

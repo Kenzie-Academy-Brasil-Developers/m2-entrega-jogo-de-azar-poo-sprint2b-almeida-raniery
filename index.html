@@ -1,21 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./src/styles/reset.css">
-  <link rel="stylesheet" href="./src/styles/style.css">
-  <title>Document</title>
-</head>
-<body>
-  <canvas id="gameDisplay">
-  </canvas>
-   <div id="controls">
-    <button class="btn" value="0">Rock</button>
-    <button class="btn" value="1">Paper</button>
-    <button class="btn" value="2">Scissors</button>
-  </div>
-  <script type="module" src="src/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/reset.css" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <title>Rock, Paper, Duel!</title>
+  </head>
+  <body>
+    <audio preload ="auto">
+      <source src="src/audio/Drifter.mp3" type="audio/mpeg">
+      <source src="src/audio/Harmonica.ogg" type="audio/ogg">
+      <source src="src/audio/Ricochet.ogg" type="audio/ogg">
+      <source src="src/audio/Game-Start.ogg" type="audio/ogg">
+    </audio>
+    <nav class="menu" id="top-nav">
+      <ul>
+        <li><a href="#characters">Inimigos</a></li>
+        <li><a href="#rules">Regras</a></li>
+        <li><a href="#about">FAQ</a></li>
+      </ul>
+    </nav>
+    <section class="game-section">
+      <div class="game-screen">
+        <div class="scanlines"></div>
+        <canvas id="gameDisplay"> </canvas>
+      </div>
+      <div id="controls">
+        <button class="btn" value="0">
+          <img class="btn-icon" src="src/img/Rock-icon.png" alt="Pedra" />
+        </button>
+
+        <button class="btn" value="1">
+          <img class="btn-icon" src="src/img/Paper-icon.png" alt="Papel" />
+        </button>
+
+        <button class="btn" value="2">
+          <img class="btn-icon" src="src/img/Scissors-icon.png" alt="Tesoura" />
+        </button>
+      </div>
+
+      <div id="machine-controls">
+        <button class="machine-btn" value="start">Start</button>
+        <button class="machine-btn" value="reset">Reset</button>
+      </div>
+    </section>
+
+    <section id="rules">
+      <h2>O clássico jogo de Pedra, Papel, Tesoura com um twist!</h2>
+      <p>
+        Você joga como o xerife de uma cidade pacata no velho-oeste contra a
+        gangue de Lucky Lucy.
+      </p>
+      <p>
+        Derrote os cinco membros da gangue em sequência em duelos de Pedra,
+        Papel, Tesoura.
+      </p>
+      <h2>Regras:</h2>
+      <ul>
+        <li>
+          Os duelistas escolhem individualmente entre Pedra, Papel ou Tesoura.
+        </li>
+        <li>Após três segundos, ambos revelam suas mãos e comparam.</li>
+        <li>
+          Você pode trocar sua escolha a qualquer momento antes de revelar sua
+          mão.
+        </li>
+      </ul>
+      <h2>Vitórias:</h2>
+      <ul>
+        <li>Pedra esmaga tesoura.</li>
+        <li>Tesoura corta papel.</li>
+        <li>Papel embrulha pedra.</li>
+      </ul>
+    </section>
+
+    <section id="characters">
+      <h1>Inimigos:</h1>
+      <h2>Pete Pacífico</h2>
+      <p>
+        Apesar de estar na vida do crime a anos, Pete nunca tirou uma vida.
+        dizem até que ele é incapaz de fechar seus punhos para bater em alguém.
+      </p>
+
+      <h2>Jack Dois-Dedos</h2>
+      <p>
+        Jack trabalhava nas minas de carvão nos arredores da cidade, até sofrer
+        um grave acidente com uma picareta desgovernada. 
+      </p>
+
+      <p>
+        Apesar de ter
+        sobrevivido, Jack perdeu pra sempre os dedos anelar e indicador da mão
+        direita, e junto com eles, a Habilidade de abrir a mão para dar
+        tchauzinho.
+      </p>
+
+      <h2>Tracy Trapaceira</h2>
+      <p>
+        Tracy abandonou a vida de luxo que levava como herdeira de um dos
+        maiores impérios de petróleo do oeste para levar uma vida de aventuras.
+      </p>
+
+      <p>
+        Sua aparência frágil e desastrada nada mais são do que uma artimanha que
+        ela usa para desarmar seus oponentes.
+      </p>
+
+      <h2>Bronco Blefa-Mau</h2>
+      <p>
+        O dinheiro que o lendário Bronco ganhou em seus assaltos seriam o
+        suficiente para garantir sua aposentadoria... Se não fosse seu vício
+        incurável em perder tudo no poker. 
+      </p>
+
+      <p>
+        Carrega sempre consigo a sua carta da
+        sorte no chapéu. Mas talvez esse amuleto não seja tão sortudo assim...
+      </p>
+
+      <h2>Lucy Sortuda</h2>
+      <p>
+        Lucy costumava trabalhar sozinha, pois sua sorte descomunal a permite
+        sobreviver aos golpes mais perigosos e imbecis que o Oeste já viu.
+      </p>
+      <p>
+        Com o tempo descobriu que quando está sozinha, essa sorte às vezes não dura
+        nem três segundos.
+      </p>
+    </section>
+
+    <section id="about">
+      <h1>Perguntas mais frequentes:</h1>
+      <h2>O que?</h2>
+      <p>Um jogo de Pedra, Papel, Tesoura com temática de velho-oeste.</p>
+      <h2>Por que?</h2>
+      <p>
+        Começou como um projeto relativamente simples para um trabalho do curso
+        de desenvolvimento web, depois eu tive mais ideias.
+      </p>
+      <h2>Como?</h2>
+      <p>
+        HTML, CSS, e javascript puros, sem nenhuma biblioteca externa (Nota-se).
+      </p>
+      <h2>Como que eu derroto o inimigo tal?</h2>
+      <p>
+        Observe os padrões e tente ser rápido o suficiente no gatilho. As descrições dos personagens também dão uma pista.
+        Fora isso, se você der sorte, alguém pode ter feito um walkthrough no Youtube. Eu não contaria com isso.
+      </p>
+    </section>
+    <script type="module" src="src/app.js"></script>
+  </body>
 </html>

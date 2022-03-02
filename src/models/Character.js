@@ -1,5 +1,5 @@
 class Character {
-  static states = ["draw","ready", "idle", "idle"];
+  static states = ["draw", "ready", "idle", "idle"];
 
   constructor({lives, graphics, moveList}) {
     this.selectedMove;
@@ -26,8 +26,15 @@ class Character {
   getGraphics(handle) {
     const {x, y, scale} = this.graphics;
     const transform     = {x, y, scale};
+    const graphic       = Array.isArray(this.graphics[handle])
+      ? this.getAltGraphic(handle)
+      : this.graphics[handle];
 
-    return {...transform, ...this.graphics[handle]}
+    return {...transform, ...graphic}
+  }
+
+  getAltGraphic(handle) {
+    return this.graphics[handle][0]
   }
 }
 
