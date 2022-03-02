@@ -42,7 +42,7 @@ canvas {
   width: 320px;
   height: 240px;
   image-rendering: crisp-edges;
-  background-image: url(/src/img/Background.jpg);
+  background-image: url("/src/img/Background.jpg");
   background-size: 320px;
   background-position-y: bottom;
   background-repeat: no-repeat;

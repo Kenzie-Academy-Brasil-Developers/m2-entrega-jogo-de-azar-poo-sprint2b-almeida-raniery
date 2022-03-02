@@ -8,7 +8,6 @@ class GameController {
     this.game.view.hud.selectedMove = move.type;
 
     if (this.game.timer.intervalId === 0) {
-      //this.game.song.pause();
       this.game.harmonica.play();
       this.game.timer.start();
     }
