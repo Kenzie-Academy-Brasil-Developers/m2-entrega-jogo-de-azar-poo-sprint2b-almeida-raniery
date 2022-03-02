@@ -6,6 +6,8 @@ class EndGameView extends View {
   }
 
   init() {
+    super.init();
+
     this.refresh();
 
     this.cont.fillStyle = "white";

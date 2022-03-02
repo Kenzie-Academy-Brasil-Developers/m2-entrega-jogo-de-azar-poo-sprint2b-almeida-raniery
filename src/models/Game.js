@@ -5,9 +5,9 @@ import Player          from "./Player.js";
 import InputController from "../controllers/InputController.js";
 import GameView        from "../views/GameView.js";
 import Character       from "./Character.js";
-import GameOverView from "../views/GameOverView.js";
-import EndGameView from "../views/EndGameView.js";
-import TitleView from "../views/TitleView.js";
+import GameOverView    from "../views/GameOverView.js";
+import EndGameView     from "../views/EndGameView.js";
+import TitleView       from "../views/TitleView.js";
 
 class Game {
     constructor() {

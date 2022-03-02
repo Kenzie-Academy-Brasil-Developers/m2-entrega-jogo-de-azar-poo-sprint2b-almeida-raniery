@@ -4,7 +4,13 @@ class View {
     this.cont = this.canvas.getContext("2d");
   }
 
-  init() {}
+  init() {
+     this.canvas.width = 320;
+     this.canvas.height = 220;
+
+     this.cont.imageSmoothingEnabled = false;
+     this.cont.webkitImageSmoothingEnabled = false;
+  }
 
   refresh() {
     this.cont.clearRect(0, 0, this.canvas.width, this.canvas.height);

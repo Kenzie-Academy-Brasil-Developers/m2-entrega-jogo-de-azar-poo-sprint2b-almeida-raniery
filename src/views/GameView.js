@@ -9,18 +9,14 @@ class GameView extends View {
   }
 
   init() {
+    super.init();
+    
     const playerImg    = document.createElement("img");
     const enemyImg     = document.createElement("img");
     const action       = document.createElement("img");
     //const ratio        = Math.ceil(window.devicePixelRatio);
 
     const { player: playerIdle, enemy: enemyIdle } = GameController.getCharacterGraphics("idle");
-
-    this.canvas.width  = 320;
-    this.canvas.height = 220;
-
-    this.cont.imageSmoothingEnabled = false;
-    this.cont.webkitImageSmoothingEnabled = false;
 
     this.playerImg    = playerImg;
     this.enemyImg     = enemyImg;

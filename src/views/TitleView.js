@@ -6,7 +6,7 @@ class TitleView extends View {
   }
 
   init() {
-    this.refresh();
+    super.init();
 
     this.cont.fillStyle = "white";
     this.cont.textAlign = "center";

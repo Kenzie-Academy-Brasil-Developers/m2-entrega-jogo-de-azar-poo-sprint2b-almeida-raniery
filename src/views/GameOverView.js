@@ -6,6 +6,8 @@ class GameOverView extends View {
   }
 
   init(){
+    super.init();
+
     this.refresh();
 
     this.cont.fillStyle = "white";
