@@ -76,6 +76,9 @@ class Game {
     }
 
     restartGame() {
+      this.song.pause();
+      this.song.currentTime = 0;
+      
       this.status          = "Running";
       this.currentEnemy    = new Enemy(enemiesDB[this.stageNumber]);
       this.playerCharacter = new Player();

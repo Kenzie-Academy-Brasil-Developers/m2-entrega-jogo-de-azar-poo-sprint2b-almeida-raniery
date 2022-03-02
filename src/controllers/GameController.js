@@ -104,6 +104,8 @@ class GameController {
   }
 
   static newGame() {
+    this.game.song.pause()
+    this.game.song.currentTime = 0;
     this.game = new Game();
     this.game.initGame();
   }
